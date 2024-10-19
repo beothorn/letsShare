@@ -1,0 +1,9 @@
+{
+  "name": "letsShare",
+  "version": "0.0.1",
+  "description": "Super simple upload, download and text share.",
+  "main": "index.js",
+  "repository": "https://github.com/beothorn/letsShare",
+  "author": "Beothorn <lucass@gmail.com>",
+  "license": "Apache2.0"
+}
