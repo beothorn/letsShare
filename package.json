@@ -3,7 +3,15 @@
   "version": "0.0.1",
   "description": "Super simple upload, download and text share.",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "repository": "https://github.com/beothorn/letsShare",
   "author": "Beothorn <lucass@gmail.com>",
-  "license": "Apache2.0"
+  "license": "Apache2.0",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "multer": "^1.4.5-lts.1"
+  }
 }

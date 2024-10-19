@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Let's Share</title>
+  <!-- Include Bootstrap CSS -->
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <!-- Custom Styles -->
+  <style>
+    body {
+      padding-top: 20px;
+    }
+    .spinner-border {
+      display: none;
+      margin-left: 10px;
+    }
+    .file-list a {
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <h1 class="mb-4 text-center">Let's Share</h1>
+
+    <!-- Files Section -->
+    <h2>Files</h2>
+    <ul class="list-group mb-4 file-list">
+      <% files.forEach(function(file){ %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <a href="/files/<%= file %>"><%= file %></a>
+          <span>
+            <!-- Optionally, add file size or delete button here -->
+          </span>
+        </li>
+      <% }); %>
+    </ul>
+
+    <!-- File Upload Form -->
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="fileInput">Upload a File</label>
+        <input type="file" class="form-control-file" id="fileInput" name="file" required />
+      </div>
+      <button type="submit" class="btn btn-primary">
+        Upload
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="uploadSpinner"></span>
+      </button>
+    </form>
+
+    <!-- Shared Text Section -->
+    <h2 class="mt-5">Shared Text</h2>
+    <form id="textForm" action="/text" method="post">
+      <div class="form-group">
+        <textarea
+          name="sharedText"
+          class="form-control"
+          rows="10"
+          placeholder="Enter text to share..."
+        ><%= sharedText %></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        Save
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" id="textSpinner"></span>
+      </button>
+    </form>
+  </div>
+
+  <!-- Include jQuery and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+  ></script>
+  <!-- Custom Scripts -->
+  <script>
+    // Show spinner on file upload
+    $('#uploadForm').on('submit', function() {
+      $('#uploadSpinner').css('display', 'inline-block');
+    });
+
+    // Show spinner on text submit
+    $('#textForm').on('submit', function() {
+      $('#textSpinner').css('display', 'inline-block');
+    });
+  </script>
+</body>
+</html>
